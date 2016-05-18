@@ -13,6 +13,10 @@ public class Message {
 
     private String text;
 
+    public Message(String text) {
+        this.text = text;
+    }
+
     public int getId() {
         return id;
     }

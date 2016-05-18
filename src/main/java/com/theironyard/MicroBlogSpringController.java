@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 public class MicroBlogSpringController {
 
     @Autowired
-    MicroBlogSpringInterface microBlogSpringInterface;
+    MicroBlogSpringRepo microBlogSpringRepo;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String webRoot(Model model, HttpSession session){
@@ -26,6 +26,16 @@ public class MicroBlogSpringController {
     public String login(String userName, HttpSession session){
 
         session.setAttribute("userName", userName);
+        return "redirect:/";
+
+    }
+
+    @RequestMapping(path = "/add-message", method = RequestMethod.POST)
+    public String addMessage(String message){
+        Message addMessage = new Message(message);
+
+        //saves new message to repo
+        microBlogSpringRepo.save(addMessage);
         return "redirect:/";
 
     }

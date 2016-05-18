@@ -14,20 +14,20 @@
 {{#userName}}
     <form action="/add-message" method="post">
         <div>
-            <input type="text" placeholder="Write a message" name="add-message"/>
+            <input type="text" placeholder="Write a message" name="message"/>
             <button type="submit">Submit</button>
         </div>
     </form>
     <form action="/delete-message" method="get">
         <div>
-            <input type="text" placeholder="message #" name="delete-message"/>
+            <input type="text" placeholder="message #" name="message"/>
             <button type="submit">Delete</button>
         </div>
     </form>
     <form action="/edit-message" method="get">
         <div>
-            <input type="text" placeholder="message #" name="edit-message#"/>
-            <input type="text" placeholder="Edit message" name="edit-messageText"/>
+            <input type="text" placeholder="message #" name="message"/>
+            <input type="text" placeholder="Edit message" name="message"/>
             <button type="submit">Edit</button>
         </div>
     </form>
