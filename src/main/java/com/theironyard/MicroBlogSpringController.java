@@ -18,7 +18,7 @@ public class MicroBlogSpringController {
     public String login(Model model, HttpSession session){
 
         //String userName = session.getAttribute("userName");
-        return "redirect:/";
+        return "home";
 
     }
 
