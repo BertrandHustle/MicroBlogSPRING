@@ -47,11 +47,28 @@ public class MicroBlogSpringController {
     }
 
     @RequestMapping(path = "/delete-message", method = RequestMethod.GET)
-    public String deleteMessage(int id){
+    public String deleteMessage(String id){
+
+        int idInt = Integer.parseInt(id);
 
         //deletes message from database
-        microBlogSpringRepo.delete(id);
+        microBlogSpringRepo.delete(idInt);
         return "redirect:/";
+    }
+
+    @RequestMapping(path = "/edit-message", method = RequestMethod.GET)
+    public String editMessage(int id, String message){
+
+        //creates new message and sets id to id of deleted message
+        Message editedMessage = new Message();
+        editedMessage.setText(message);
+        editedMessage.setId(id);
+
+        //deletes old message and saves new one at correct id
+        microBlogSpringRepo.delete(id);
+        microBlogSpringRepo.save(editedMessage);
+        return "redirect:/";
+
     }
 
 }
