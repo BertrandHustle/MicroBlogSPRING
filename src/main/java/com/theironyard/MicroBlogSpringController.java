@@ -17,7 +17,12 @@ public class MicroBlogSpringController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String webRoot(Model model, HttpSession session){
 
+        //used to add messages to model
+        Iterable<Message> messages;
+        messages = microBlogSpringRepo.findAll();
+
         model.addAttribute("userName", session.getAttribute("userName"));
+        model.addAttribute("messages", messages);
         return "home";
 
     }
@@ -32,12 +37,21 @@ public class MicroBlogSpringController {
 
     @RequestMapping(path = "/add-message", method = RequestMethod.POST)
     public String addMessage(String message){
-        Message addMessage = new Message(message);
+        Message addMessage = new Message();
+        addMessage.setText(message);
 
         //saves new message to repo
         microBlogSpringRepo.save(addMessage);
         return "redirect:/";
 
+    }
+
+    @RequestMapping(path = "/delete-message", method = RequestMethod.GET)
+    public String deleteMessage(int id){
+
+        //deletes message from database
+        microBlogSpringRepo.delete(id);
+        return "redirect:/";
     }
 
 }

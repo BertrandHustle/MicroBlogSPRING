@@ -13,10 +13,6 @@ public class Message {
 
     private String text;
 
-    public Message(String text) {
-        this.text = text;
-    }
-
     public int getId() {
         return id;
     }
@@ -31,5 +27,13 @@ public class Message {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                '}';
     }
 }
